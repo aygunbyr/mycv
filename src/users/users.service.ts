@@ -15,6 +15,9 @@ export class UsersService {
   }
 
   findOne(id: number) {
+    // when session userId is null,
+    // prevent whoami route to return the first user in DB
+    if (!id) return null;
     return this.userRepository.findOneBy({ id });
   }
 
